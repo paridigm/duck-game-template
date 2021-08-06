@@ -32,7 +32,7 @@ html, body {
 
 .game-object {
   position: absolute;
-  background-color: red;
+  background-color: Red;
   user-select: none;
 }
 .player {

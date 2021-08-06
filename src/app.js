@@ -30,8 +30,14 @@ function App(data) {
 	function update() {}
 
 	function enter() {
+
+		// initialize nipple
+		// NOTE: comment this out to disable nipple
 		store.initNipple(scenes.game.elem);
+
+		// set the initial scene
 		store.setScene('game');
+
 	}
 	function exit() {}
 
