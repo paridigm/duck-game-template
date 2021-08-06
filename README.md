@@ -13,4 +13,6 @@ With this template, you can easily create a simple JavaScript game with basic HT
 
 ## Get Started
 
-Do a "Find in project" (CTRL + SHIFT + F) for the phrase "HERE" to start!
+Click index.html and open it in your browser.
+
+Then, do a "Find in project" (CTRL + SHIFT + F) for the phrase "HERE" to start!
