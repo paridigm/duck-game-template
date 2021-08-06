@@ -25,7 +25,7 @@ function Explosion(data) {
 	function update() {}
 
 	function enter() {
-		nextFrame(() => {
+		nextRepaint(() => {
 			elem.style.transform = 'scale(6, 6)';
 			elem.style.backgroundColor = '#aaa';
 			elem.style.opacity = 0;

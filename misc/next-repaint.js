@@ -1,8 +1,8 @@
 
 /*
- * waits for the next screen render...
+ * waits for the next screen repaint
  */
-function nextFrame(handler) {
+function nextRepaint(handler) {
 	requestAnimationFrame(function() {
 		requestAnimationFrame(function() {
 			handler();
