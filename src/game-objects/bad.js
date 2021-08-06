@@ -18,10 +18,10 @@ function Bad(data) {
 	function update() {
 
 		// move down
-		data.y += 1.5;
+		data.y += 1.8;
 
 		// reset
-		if(data.y > 200) {
+		if(data.y > 240) {
 			reset();
 		}
 
@@ -62,8 +62,8 @@ function Bad(data) {
 	}
 
 	function reset() {
-		data.x = Math.random()*200;
-		data.y = 0;
+		data.x = Math.random()*260 - 30;
+		data.y = -30;
 	}
 
 	function enter() {}

@@ -69,7 +69,7 @@ function Game(data) {
 			}
 			// reset bad
 			world['bad' + i].data.x = 100;
-			world['bad' + i].data.y = 0;
+			world['bad' + i].data.y = -100;
 		}
 
 		////////////////////////////////////////////////////////////////
