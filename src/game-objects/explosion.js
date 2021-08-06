@@ -18,13 +18,11 @@ function Explosion(data) {
 		elem.style.width = data.width + 'px';
 		elem.style.height = data.height + 'px';
 
-		store.on('scene', update);
+		store.on('scene', onTransitionEnd);
 		elem.addEventListener('transitionend', onTransitionEnd);
 	}
 
-	function update() {
-		onTransitionEnd();
-	}
+	function update() {}
 
 	function enter() {
 		nextFrame(() => {
@@ -36,7 +34,7 @@ function Explosion(data) {
 	function exit() {}
 
 	function destroy() {
-		store.off('scene', update);
+		store.off('scene', onTransitionEnd);
 		elem.removeEventListener('transitionend', onTransitionEnd);
 	}
 
