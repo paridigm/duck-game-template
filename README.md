@@ -4,7 +4,7 @@ Welcome to the Duck game template - a JavaScript game template built in Duck (ht
 
 With this template, you can easily create a simple JavaScript game with basic HTML elements.
 
-See it live at,
+See it live at,  
 https://duck-game-template.netlify.app/
 
 ## Features
