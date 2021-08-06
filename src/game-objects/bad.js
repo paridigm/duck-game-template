@@ -30,10 +30,23 @@ function Bad(data) {
 		if(world) {
 			if(world.player) {
 				if(hitTest(world.player.data, data)) {
+
 					// uncomment the line below to remove player upon collision...
 					// store.removeGameObject('player');
+
+					// add explosion
+					game.addGameObject('explosion' + game.explosionCounter, Explosion, {
+						x: data.x + data.width/2,
+						y: data.y + data.height/2,
+					});
+					game.explosionCounter++;
+
+					// remove self
 					game.removeGameObject(data.id);
+
+					// goto gameOver scene
 					setTimeout(() => { store.setScene('gameOver'); }, 1000);
+
 				}
 			}
 		}

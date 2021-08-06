@@ -36,6 +36,13 @@ html, body {
   background-color: Red;
   user-select: none;
 }
+
 .player {
   background-color: DodgerBlue;
+}
+
+.explosion {
+  border-radius: 50%;
+  background-color: Yellow;
+  transition: all 0.6s ease-out;
 }

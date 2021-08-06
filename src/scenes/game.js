@@ -10,7 +10,8 @@ function Game(data) {
 	game.reset = reset;
 	let stageElem;
 
-	const numBads = 6;
+	game.numBads = 6;
+	game.explosionCounter = 0;
 
 	function construct() {
 		elem = document.createElement('div');
@@ -32,7 +33,7 @@ function Game(data) {
 				stageElem.appendChild(world.player.elem);
 
 				// bads
-				for(let i = 0; i < numBads; i++) {
+				for(let i = 0; i < game.numBads; i++) {
 					world['bad' + i] = new Bad({ store, game, world, id: 'bad'+ i });
 					stageElem.appendChild(world['bad' + i].elem);
 				}
@@ -60,7 +61,7 @@ function Game(data) {
 		world.player.data.y = 200;
 
 		//// bads
-		for(let i = 0; i < numBads; i++) {
+		for(let i = 0; i < game.numBads; i++) {
 			// create bad if bad missing
 			if(!world['bad' + i]) {
 				world['bad' + i] = new Bad({ store, game, world, id: 'bad'+ i });
@@ -84,6 +85,7 @@ function Game(data) {
 		data.id = id;
 		world[id] = new type(data);
 		stageElem.appendChild(world[id].elem);
+		world[id].enter();
 	}
 	function removeGameObject(id) {
 		const gameObject = world[id];
