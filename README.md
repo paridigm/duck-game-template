@@ -1,4 +1,4 @@
-# duck-game-template
+# Duck Game Template
 
 Welcome to the Duck game template - a JavaScript game template built in Duck (https://duckjs.org).
 
