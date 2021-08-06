@@ -30,23 +30,7 @@ function Bad(data) {
 		if(world) {
 			if(world.player) {
 				if(hitTest(world.player.data, data)) {
-
-					// uncomment the line below to remove player upon collision...
-					// store.removeGameObject('player');
-
-					// add explosion
-					game.addGameObject('explosion' + game.explosionCounter, Explosion, {
-						x: data.x + data.width/2,
-						y: data.y + data.height/2,
-					});
-					game.explosionCounter++;
-
-					// remove self
-					game.removeGameObject(data.id);
-
-					// goto gameOver scene
-					setTimeout(() => { store.setScene('gameOver'); }, 1000);
-
+					handlePlayerCollision();
 				}
 			}
 		}
@@ -56,6 +40,26 @@ function Bad(data) {
 		elem.style.top = data.y + 'px';
 		elem.style.width = data.width + 'px';
 		elem.style.height = data.height + 'px';
+
+	}
+
+	function handlePlayerCollision() {
+
+		// add explosion
+		game.addGameObject('explosion' + game.explosionCounter, Explosion, {
+			x: data.x + data.width/2,
+			y: data.y + data.height/2,
+		});
+		game.explosionCounter++;
+
+		// remove self
+		game.removeGameObject(data.id);
+
+		// uncomment the line below to remove player upon collision...
+		// store.removeGameObject('player');
+
+		// goto gameOver scene
+		setTimeout(() => { store.setScene('gameOver'); }, 1000);
 
 	}
 
