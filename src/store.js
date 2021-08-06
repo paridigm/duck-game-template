@@ -53,8 +53,6 @@ function Store(data) {
 		emit('tick');
 	}
 
-	function removeGameObject(id) { emit('removeGameObject', id); }
-
 	function onKeyDown(e) {
 		switch (e.key) {
 			case 'ArrowRight': case 'd': buttons.right = true; break;
@@ -139,7 +137,6 @@ function Store(data) {
 	return {
 		getScene,
 		setScene,
-		removeGameObject,
 		joystick,
 		initNipple,
 		tick,

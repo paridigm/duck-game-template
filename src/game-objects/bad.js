@@ -2,6 +2,7 @@
 function Bad(data) {
 	let elem;
 	const store = data.store;
+	const game = data.game;
 	const world = data.world;
 
 	function construct() {
@@ -31,7 +32,7 @@ function Bad(data) {
 				if(hitTest(world.player.data, data)) {
 					// uncomment the line below to remove player upon collision...
 					// store.removeGameObject('player');
-					store.removeGameObject(data.id);
+					game.removeGameObject(data.id);
 					setTimeout(() => { store.setScene('gameOver'); }, 1000);
 				}
 			}

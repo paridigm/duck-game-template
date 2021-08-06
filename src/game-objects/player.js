@@ -2,6 +2,8 @@
 function Player(data) {
 	let elem;
 	const store = data.store;
+	const game = data.game;
+	const world = data.world;
 
 	function construct() {
 		elem = document.createElement('div');
