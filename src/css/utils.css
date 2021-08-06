@@ -1,0 +1,25 @@
+
+.border-box { box-sizing: border-box; }
+.block { display: block; }
+.rel { position: relative; }
+.abs { position: absolute; }
+.fix { position: fixed; }
+.l0 { left: 0; }
+.r0 { right: 0; }
+.t0 { top: 0; }
+.b0 { bottom: 0; }
+.a0 { top: 0; bottom: 0; left: 0; right: 0; }
+.w100 { width: 100%; }
+.h100 { height: 100%; }
+.mxa { margin-left: auto; margin-right: auto; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.flex { display: flex; }
+.flex-center { justify-content: center; align-items: center; }
+.flex-center-x { justify-content: center; }
+.flex-center-y { align-items: center; }
+.clickable { cursor: pointer; }
+.unclickable { pointer-events: none; }
+.overflow-hidden { overflow: hidden; }
+.hidden { display: none; }

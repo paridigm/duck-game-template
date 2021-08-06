@@ -1,0 +1,40 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+#stage {
+  position: relative;
+  width: 210px;
+  height: 230px;
+  background-color: #ddd;
+  overflow: hidden;
+  user-select: none;
+}
+
+#game-over {
+  font-size: 32px;
+}
+
+.game-object {
+  position: absolute;
+  background-color: red;
+  user-select: none;
+}
+.player {
+  background-color: DodgerBlue;
+}

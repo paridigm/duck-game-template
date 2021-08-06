@@ -1,0 +1,16 @@
+
+////////////////////////////////////////////////////////////////
+// main
+
+const store = new Store({});
+let app;
+mount();
+
+////////////////////////////////////////////////////////////////
+// utils
+
+function mount() {
+	app = new App({ store });
+	document.body.insertBefore(app.elem, document.body.childNodes[0]);
+	app.enter();
+}
