@@ -22,6 +22,7 @@ function GameOver(data) {
 			elem.appendChild(el);
 		}
 		store.on('scene', update);
+		store.on('buttonDown', onButtonDown);
 	}
 
 	function update() {
@@ -39,6 +40,14 @@ function GameOver(data) {
 
 	function gotoGameScene() {
 		store.setScene('game');
+	}
+
+	function onButtonDown() {
+		if(store.getScene() === 'gameOver') {
+			if(store.buttons.ok || store.buttons.fire) {
+				gotoGameScene();
+			}
+		}
 	}
 
 	construct();

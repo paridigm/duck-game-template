@@ -39,10 +39,8 @@ function Explosion(data) {
 	}
 
 	function onTransitionEnd() {
-		if(world) {
-			if(world[data.id]) {
-				game.removeGameObject(data.id);
-			}
+		if(world[data.id]) {
+			game.removeGameObject(data.id);
 		}
 	}
 

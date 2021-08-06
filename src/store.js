@@ -5,7 +5,14 @@ function Store(data) {
 	let scene = data.scene;
 	let tickIntervalId;
 	let nippleManager;
-	const buttons = {};
+	const buttons = {
+		right: false,
+		left: false,
+		down: false,
+		up: false,
+		fire: false,
+		ok: false,
+	};
 	const joyStickButtonContribution = { x: 0, y: 0 };
 	const joyStickNippleContribution = { x: 0, y: 0 };
 	const joystick = { x: 0, y: 0 };
@@ -54,14 +61,20 @@ function Store(data) {
 	}
 
 	function onKeyDown(e) {
+		let change = false;
 		switch (e.key) {
-			case 'ArrowRight': case 'd': buttons.right = true; break;
-			case 'ArrowLeft':  case 'a': buttons.left  = true; break;
-			case 'ArrowDown':  case 's': buttons.down  = true; break;
-			case 'ArrowUp':    case 'w': buttons.up    = true; break;
+			case 'ArrowRight': case 'd': if(!buttons.right) { buttons.right = true; change = true; } break;
+			case 'ArrowLeft':  case 'a': if(!buttons.left)  { buttons.left  = true; change = true; } break;
+			case 'ArrowDown':  case 's': if(!buttons.down)  { buttons.down  = true; change = true; } break;
+			case 'ArrowUp':    case 'w': if(!buttons.up)    { buttons.up    = true; change = true; } break;
+			case ' ':     if(!buttons.fire) { buttons.fire = true; change = true; } break;
+			case 'Enter': if(!buttons.ok)   { buttons.ok   = true; change = true; } break;
 		}
 		updateJoyStickButtonContribution();
 		updateJoyStick();
+		if(change) {
+			emit('buttonDown');
+		}
 	}
 	function onKeyUp(e) {
 		switch (e.key) {
@@ -69,9 +82,12 @@ function Store(data) {
 			case 'ArrowLeft':  case 'a': buttons.left  = false; break;
 			case 'ArrowDown':  case 's': buttons.down  = false; break;
 			case 'ArrowUp':    case 'w': buttons.up    = false; break;
+			case ' ':     buttons.fire = false; break;
+			case 'Enter': buttons.ok   = false; break;
 		}
 		updateJoyStickButtonContribution();
 		updateJoyStick();
+		emit('buttonUp');
 	}
 
 	function updateJoyStickButtonContribution() {
@@ -137,6 +153,7 @@ function Store(data) {
 	return {
 		getScene,
 		setScene,
+		buttons,
 		joystick,
 		initNipple,
 		tick,

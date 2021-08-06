@@ -27,11 +27,9 @@ function Bad(data) {
 
 		// HERE (5): collisions
 		// collision
-		if(world) {
-			if(world.player) {
-				if(hitTest(world.player.data, data)) {
-					handlePlayerCollision();
-				}
+		if(world.player) {
+			if(hitTest(world.player.data, data)) {
+				handlePlayerCollision();
 			}
 		}
 
