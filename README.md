@@ -6,7 +6,7 @@ With this template, you can easily create a simple JavaScript game with basic HT
 
 ## Features
 - Scenes
-- Game Objects
+- Game objects
 - Collision detection
 - Keyboard interaction
 - Touch interaction (with nippleJS - https://yoannmoi.net/nipplejs)
