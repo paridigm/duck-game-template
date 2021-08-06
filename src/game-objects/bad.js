@@ -24,10 +24,12 @@ function Bad(data) {
 			reset();
 		}
 
+		// HERE (5): collisions
 		// collision
 		if(world) {
 			if(world.player) {
 				if(hitTest(world.player.data, data)) {
+					// uncomment the line below to remove player upon collision...
 					// store.removeGameObject('player');
 					store.removeGameObject(data.id);
 					setTimeout(() => { store.setScene('gameOver'); }, 1000);
