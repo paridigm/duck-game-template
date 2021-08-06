@@ -92,7 +92,7 @@ function Store(data) {
 		    zone: zoneElem,
 		    color: 'DodgerBlue',
 				mode: 'semi',
-	      catchDistance: 110,
+	      catchDistance: 60,
 		  });
 
 			nippleManager
