@@ -10,6 +10,7 @@ function Game(data) {
 	game.reset = reset;
 	let stageElem;
 
+	game.gameOver = false;
 	game.numBads = 6;
 	game.explosionCounter = 0;
 
@@ -49,6 +50,8 @@ function Game(data) {
 
 		////////////////////////////////////////////////////////////////
 		// HERE: reset game logic
+
+		game.gameOver = false;
 
 		//// player
 		// create player if player missing

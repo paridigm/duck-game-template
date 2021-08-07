@@ -57,7 +57,10 @@ function Bad(data) {
 		// store.removeGameObject('player');
 
 		// goto gameOver scene
-		setTimeout(() => { store.setScene('gameOver'); }, 1000);
+		if(!game.gameOver) {
+			setTimeout(() => { store.setScene('gameOver'); }, 1000);
+			game.gameOver = true;
+		}
 
 	}
 
