@@ -13,6 +13,7 @@ https://duck-game-template.netlify.app
 - Collision detection
 - Keyboard interaction
 - Touch interaction (with nippleJS - https://yoannmoi.net/nipplejs)
+- Live game object debugging
 
 ## Get Started
 
