@@ -58,7 +58,7 @@ function Bad(data) {
 
 		// goto gameOver scene
 		if(!game.gameOver) {
-			setTimeout(() => { store.setScene('gameOver'); }, 1000);
+			setTimeout(() => { store.setScene('gameOver'); }, 2000);
 			game.gameOver = true;
 		}
 

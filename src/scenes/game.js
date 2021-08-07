@@ -10,6 +10,9 @@ function Game(data) {
 	game.reset = reset;
 	let stageElem;
 
+	let debugElemContainer;
+	let debugElem;
+
 	game.gameOver = false;
 	game.numBads = 6;
 	game.explosionCounter = 0;
@@ -18,6 +21,7 @@ function Game(data) {
 		elem = document.createElement('div');
 		elem.id = 'game';
 		elem.className = 'flex flex-center';
+		elem.style.flexDirection = 'column';
 		{
 
 			// stage
@@ -42,8 +46,20 @@ function Game(data) {
 				////////////////////////////////////////////////////////////////
 
 			}
+
+			// debug
+			debugElemContainer = document.createElement('div');
+			debugElemContainer.className = 'debug-container rel';
+			debugElemContainer.style.width = 210 + 'px';
+			debugElem = document.createElement('span');
+			debugElem.className = 'debug abs';
+			debugElem.innerHTML = '';
+			debugElemContainer.appendChild(debugElem);
+			elem.appendChild(debugElemContainer);
+
 		}
 		store.on('scene', update);
+		store.on('tick', updateDebugElem);  // comment this out to prevent debug
 	}
 
 	function reset() {
@@ -52,6 +68,7 @@ function Game(data) {
 		// HERE: reset game logic
 
 		game.gameOver = false;
+		game.explosionCounter = 0;
 
 		//// player
 		// create player if player missing
@@ -59,7 +76,7 @@ function Game(data) {
 			world.player = new Player({ store, game, world, id: 'player', x: 100 });
 			stageElem.appendChild(world.player.elem);
 		}
-		// reset player
+		// reset player position
 		world.player.data.x = 70;
 		world.player.data.y = 200;
 
@@ -70,8 +87,8 @@ function Game(data) {
 				world['bad' + i] = new Bad({ store, game, world, id: 'bad'+ i });
 				stageElem.appendChild(world['bad' + i].elem);
 			}
-			// reset bad
-			world['bad' + i].data.x = 100;
+			// reset bad position
+			world['bad' + i].data.x = 100 + i * 10;
 			world['bad' + i].data.y = -100;
 		}
 
@@ -105,6 +122,15 @@ function Game(data) {
 		}else{
 			elem.classList.add('hidden');
 		}
+	}
+
+	function updateDebugElem() {
+		let s = '';
+		s += '{ ';
+		for(let id in world) { s += id + ' '; }
+		s += '}';
+		// update DOM only when there is a change
+		if(debugElem.innerHTML !== s) { debugElem.innerHTML = s; }
 	}
 
 	function enter() {}
