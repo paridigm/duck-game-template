@@ -162,6 +162,7 @@ function Store(data) {
 
 	////////////////////////////////
 	// events
+	// NOTE: modified to support off() during emit()
 	function on(name, handler) {
 		if(!events[name]) { events[name] = []; }
 		events[name].push(handler);
@@ -169,12 +170,13 @@ function Store(data) {
 	function off(name, handler) {
 		if(events[name]) {
 			const index = events[name].indexOf(handler);
-			if(index != -1) { events[name].splice(index, 1); }
+			if(index != -1) { events[name][index] = null; }
 		}
 	}
 	function emit(name, value) {
 		if(events[name]) {
 			for(let i = 0; i < events[name].length; i++) {
+				if(!events[name][i]) { events[name].splice(i, 1); i--; continue; }
 				events[name][i](value);
 			}
 		}

@@ -91,14 +91,10 @@ function Game(data) {
 		world[id].enter();
 	}
 	function removeGameObject(id) {
-		const gameObject = world[id];
-		if(gameObject) {
-			// remove from world and stage
+		if(world[id]) {
+			stageElem.removeChild(world[id].elem);
+			world[id].destroy();
 			delete world[id];
-			stageElem.removeChild(gameObject.elem);
-			// remove from game tick
-			// NOTE: wait a tick for game objects to finish the current game tick
-			setTimeout(() => { gameObject.destroy(); });
 		}
 	}
 
