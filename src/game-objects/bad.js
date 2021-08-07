@@ -54,7 +54,7 @@ function Bad(data) {
 		game.removeGameObject(data.id);
 
 		// uncomment the line below to remove player upon collision...
-		// store.removeGameObject('player');
+		// game.removeGameObject('player');
 
 		// goto gameOver scene
 		if(!game.gameOver) {
