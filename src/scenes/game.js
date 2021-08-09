@@ -140,10 +140,12 @@ function Game(data) {
 
 	function onPostTick() {
 
+		// TODO (2): refactor z-sorting code into functions
+
 		// z-sort game obects
 		if(window.a) {
 
-			// TODO: handle when game objects are removed
+			// TODO (1): handle when game objects are removed
 
 			// move unsorted things into unsorted list
 			let zg;  // greatest z seen so far
@@ -206,6 +208,7 @@ function Game(data) {
 			// move stuff in DOM
 			for(let i = 0; i < worldSorted.length; i++) {
 				const o = worldSorted[i];
+				// TODO: only move DOM elements if they need to be moved
 				stageElem.insertBefore(o.elem, stageElem.childNodes[i+1]);
 			}
 
