@@ -18,7 +18,8 @@ function Bad(data) {
 	function update() {
 
 		// move down
-		data.y += 1.8;
+		// data.y += 1.8;
+		data.z = data.y + data.height;
 
 		// reset
 		if(data.y > 240) {
@@ -27,11 +28,11 @@ function Bad(data) {
 
 		// HERE (5): collisions
 		// collision
-		if(world.player) {
-			if(hitTest(world.player.data, data)) {
-				handlePlayerCollision();
-			}
-		}
+		// if(world.player) {
+		// 	if(hitTest(world.player.data, data)) {
+		// 		handlePlayerCollision();
+		// 	}
+		// }
 
 		// update view
 		elem.style.left = data.x + 'px';

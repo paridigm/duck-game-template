@@ -59,7 +59,8 @@ function Game(data) {
 
 		}
 		store.on('scene', update);
-		store.on('tick', updateDebugElem);  // comment this out to prevent debug
+		store.on('tick', onTick);
+		store.on('postTick', onPostTick);
 	}
 
 	function reset() {
@@ -79,6 +80,7 @@ function Game(data) {
 		// reset player position
 		world.player.data.x = 70;
 		world.player.data.y = 200;
+		world.player.data.z = 0;
 
 		//// bads
 		for(let i = 0; i < game.numBads; i++) {
@@ -88,8 +90,9 @@ function Game(data) {
 				stageElem.appendChild(world['bad' + i].elem);
 			}
 			// reset bad position
-			world['bad' + i].data.x = 100 + i * 10;
-			world['bad' + i].data.y = -100;
+			world['bad' + i].data.x = Math.random() * 200;
+			world['bad' + i].data.y = Math.random() * 200;
+			world['bad' + i].data.z = 0;
 		}
 
 		////////////////////////////////////////////////////////////////
@@ -122,6 +125,93 @@ function Game(data) {
 		}else{
 			elem.classList.add('hidden');
 		}
+	}
+
+	function onTick() {
+		updateDebugElem();
+	}
+
+	const worldSortObjects = {};
+	const worldUnsorted = [];
+	const worldSorted = [];
+
+	// temp
+	window.a = true;
+
+	function onPostTick() {
+
+		// z-sort game obects
+		if(window.a) {
+
+			// TODO: handle when game objects are removed
+
+			// move unsorted things into unsorted list
+			let zg;  // greatest z seen so far
+			for(let i = 0; i < worldSorted.length; i++) {
+				const o = worldSorted[i];
+				const z = o.data.z;
+
+				// first iteration
+				if(zg == null) {
+					zg = o.data.z;
+				}
+
+				// other iterations
+				else{
+
+					// good, update zg
+					if(z >= zg) {
+						zg = z;
+					}
+
+					// bad, move to unsorted
+					else{
+						worldUnsorted.push(worldSorted.splice(i, 1)[0]);
+						i--;
+					}
+
+				}
+			}
+
+			// add objects that aren't added yet
+			for(let id in world) {
+				if(!worldSortObjects[id]) {
+					worldUnsorted.push(world[id]);
+					worldSortObjects[id] = world[id];
+				}
+			}
+
+			// place unsorted into sorted
+			while(worldUnsorted.length > 0) {
+				const o = worldUnsorted.pop();
+				const z = o.data.z;
+
+				let placed = false;
+				for(let i = 0; i < worldSorted.length; i++) {
+					const zi = worldSorted[i].data.z;
+					if(zi > z) {
+						worldSorted.splice(i, 0, o);
+						placed = true;
+						break;
+					}
+				}
+				if(!placed) {
+					worldSorted.push(o);
+					placed = true;
+					console.log(worldSorted);
+				}
+
+			}
+
+			// move stuff in DOM
+			for(let i = 0; i < worldSorted.length; i++) {
+				const o = worldSorted[i];
+				stageElem.insertBefore(o.elem, stageElem.childNodes[i+1]);
+			}
+
+			// window.a = false;
+		}
+
 	}
 
 	function updateDebugElem() {

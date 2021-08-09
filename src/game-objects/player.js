@@ -23,6 +23,7 @@ function Player(data) {
 		// movement
 		data.x += store.joystick.x;
 		data.y += store.joystick.y;
+		data.z = data.y + data.height;
 
 		// boundaries
 		if(data.x < 0) {

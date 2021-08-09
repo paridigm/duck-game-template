@@ -58,6 +58,7 @@ function Store(data) {
 
 	function tick() {
 		emit('tick');
+		emit('postTick');
 	}
 
 	function onKeyDown(e) {
