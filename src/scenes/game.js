@@ -3,13 +3,16 @@ function Game(data) {
 	let elem;
 	const store = data.store;
 	const game = data;
-
 	const world = {};
+
 	game.world = world;
 	game.addGameObject = addGameObject;
 	game.removeGameObject = removeGameObject;
 	game.reset = reset;
+
 	let stageElem;
+
+	let zSorter;
 
 	let debugElemContainer;
 	let debugElem;
@@ -17,9 +20,7 @@ function Game(data) {
 	game.gameOver = false;
 	game.numBads = 6;
 	game.explosionCounter = 0;
-
-	let zSorter;
-
+	
 	function construct() {
 
 		// elem
