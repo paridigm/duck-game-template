@@ -3,9 +3,9 @@ function ZSorter(data) {
 	const world = data.world;
 	const stageElem = data.stageElem;
 
-	const objects = {};
-	const unsorted = [];
-	const sorted = [];
+	const objects = {};   // game objects that are in unsorted and/or sorted
+	const unsorted = [];  // game objects that need to be placed into sorted
+	const sorted = [];    // games objects sorted by gameObject.data.z
 
 	function zSort() {
 
@@ -72,7 +72,6 @@ function ZSorter(data) {
 			if(!placed) {
 				sorted.push(o);
 				placed = true;
-				// console.log(sorted);
 			}
 
 		}
