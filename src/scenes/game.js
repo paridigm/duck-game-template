@@ -80,7 +80,7 @@ function Game(data) {
 		//// player
 		// create player if player missing
 		if(!world.player) {
-			world.player = new Player({ store, game, world, id: 'player', x: 100 });
+			world.player = new Player({ store, game, world, id: 'player' });
 			stageElem.appendChild(world.player.elem);
 		}
 		// reset player position
