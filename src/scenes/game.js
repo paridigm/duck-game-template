@@ -2,20 +2,27 @@
 function Game(data) {
 	let elem;
 	const store = data.store;
+
 	const game = data;
 	const world = {};
 	game.world = world;
 	game.addGameObject = addGameObject;
 	game.removeGameObject = removeGameObject;
 	game.reset = reset;
+
 	let stageElem;
 
 	let debugElemContainer;
 	let debugElem;
 
+	////////////////////////////////////////////////////////////////
+	// HERE (3.1): game variables
+
 	game.gameOver = false;
 	game.numBads = 6;
 	game.explosionCounter = 0;
+
+	////////////////////////////////////////////////////////////////
 
 	function construct() {
 		elem = document.createElement('div');
@@ -31,10 +38,10 @@ function Game(data) {
 			{
 
 				////////////////////////////////////////////////////////////////
-				// HERE (3): add game objects
+				// HERE (3.2): add game objects
 
 				// player
-				world.player = new Player({ store, game, world, id: 'player', x: 100 });
+				world.player = new Player({ store, game, world, id: 'player' });
 				stageElem.appendChild(world.player.elem);
 
 				// bads
@@ -65,7 +72,7 @@ function Game(data) {
 	function reset() {
 
 		////////////////////////////////////////////////////////////////
-		// HERE: reset game logic
+		// HERE (3.3): game reset logic
 
 		game.gameOver = false;
 		game.explosionCounter = 0;
@@ -139,5 +146,5 @@ function Game(data) {
 	function destroy() {}
 
 	construct();
-	return { elem, data, update, enter, exit, destroy, world, stageElem };
+	return { elem, data, update, enter, exit, destroy, stageElem };
 }

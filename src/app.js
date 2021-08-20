@@ -12,7 +12,7 @@ function App(data) {
 		{
 
 			////////////////////////////////////////////////////////////////
-			// HERE (2): add scenes
+			// HERE (2): scenes
 
 			// game scene
 			scenes.game = new Game({ store });
